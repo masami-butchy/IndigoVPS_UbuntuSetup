@@ -80,14 +80,6 @@ do
   echo "ファイル $sshdConfigFile の設定 ${!sshdOldVarName} を ${!sshdNewVarName} に置換しました。"
 done
 
-#sudo sed -i "s/$oldConfigText1/$newConfigText1/g" "$sshdConfigFile"
-#echo "ファイル $sshdConfigFile の設定 $oldConfigText1 を $newConfigText1 に置換しました。"
-#sudo sed -i "s/$oldConfigText2/$newConfigText2/g" "$sshdConfigFile"
-#echo "ファイル $sshdConfigFile の設定 $oldConfigText2 を $newConfigText2 に置換しました。"
-
-# sshdを再起動
-#sudo systemctl restart sshd
-
 # ufw(ファイアウォール)の設定
 #連続アクセスを制限して各ポートのアクセスを許可（6回/30s以上でアクセス拒否）
 echo "連続アクセスを制限して以下のポートのポートのアクセスを許可"

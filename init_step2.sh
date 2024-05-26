@@ -50,7 +50,7 @@ curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list
 sudo apt-get update
 sudo apt-get install tailscale
 #tailscale 起動, 認証
-if [[ $reboot = [yY] ]]; then
+if [[ $exitnodeFlag = [yY] ]]; then
   echo "このサーバーをexitnodeとしてtailscaleを認証・起動"
   sudo tailscale up --advertise-exit-node
 else
