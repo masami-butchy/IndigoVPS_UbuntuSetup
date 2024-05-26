@@ -8,9 +8,10 @@
 #-----------設定----------------------------
 
 #---------ログ設定-------------------
+mkdir logInitInstSetup
 # ログの出力ディレクトリをを変更する場合は以下のLOG_OUT,LOG_ERRのパスを変更する。
-LOG_OUT=./logInitInstStep/setup2_stdOut.log
-LOG_ERR=./logInitInstStep/setup2_stdErr.log
+LOG_OUT=./logInitInstSetup/setup1_stdout.log
+LOG_ERR=./logInitInstSetup/setup1_stderr.log
 
 exec 1> >(
   while read -r l; do echo "[$(date +"%Y-%m-%d %H:%M:%S")] $l"; done \
