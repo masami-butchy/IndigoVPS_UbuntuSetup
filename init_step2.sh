@@ -7,6 +7,10 @@
 
 #-----------設定----------------------------
 
+#-------tailscale exitnode ON/OFF-------------------
+#exitnodeを適用する [y/n]
+exitnodeFlag=y
+
 #---------ログ設定-------------------
 mkdir logInitInstSetup
 # ログの出力ディレクトリをを変更する場合は以下のLOG_OUT,LOG_ERRのパスを変更する。
@@ -46,8 +50,13 @@ curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list
 sudo apt-get update
 sudo apt-get install tailscale
 #tailscale 起動, 認証
-echo "このサーバーをexitnodeとしてtailscaleを認証・起動"
-sudo tailscale --advertise-exit-node
+if [[ $reboot = [yY] ]]; then
+  echo "このサーバーをexitnodeとしてtailscaleを認証・起動"
+  sudo tailscale up --advertise-exit-node
+else
+  echo "tailscaleを認証・起動（exitnode設定なし）"
+  sudo tailscale up
+fi
 
 
 # 初期設定終了

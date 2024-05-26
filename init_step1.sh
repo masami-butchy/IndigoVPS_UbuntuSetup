@@ -14,7 +14,7 @@ oldConfigText2="#PermitRootLogin prohibit-password"
 # 変更後の設定テキスト
 # 入力例) newConfigText1="変更後の設定テキスト"
 newConfigText1="PasswordAuthentication no"
-oldConfigText2="PermitRootLogin no"
+newConfigText2="PermitRootLogin no"
 # sshd_configファイルのパスを設定
 sshdConfigFile="/etc/ssh/sshd_config"
 
@@ -106,8 +106,7 @@ echo "ufwを再読み込み"
 sudo ufw reload
 
 
-# 初期ユーザー削除
-#sudo userdel -r ubuntu
+# step1 END
 echo
 echo "再起動後、作成した新しいユーザーでログインし、"
 echo "init_step2.sh を実行してください。"
