@@ -26,6 +26,7 @@ langJPInstall=y
 port=(22)
 
 #---------ログ設定---------------------------
+mkdir logInitInstStup
 # ログの出力ディレクトリをを変更する場合は以下のLOG_OUT,LOG_ERRのパスを変更する。
 LOG_OUT=./logInitInstStup/setup1_stdOut.log
 LOG_ERR=./logInitInstStep/setup1_stdErr.log
