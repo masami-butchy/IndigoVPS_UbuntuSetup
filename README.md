@@ -1,5 +1,7 @@
 # IndigoVPS_UbuntuSetup
+
 ## 概要
+
 - IndigoVPS（Ubuntu）の初期設定を行います。
 - デフォルトユーザーを削除し作成したユーザーを設定し、tailscaleをインストールします。
     ```
@@ -7,6 +9,7 @@
     ```
 
 ## このスクリプトで設定する内容
+
 - Defaultのユーザーを置き換える新規ユーザーを作成
     - 新規ユーザーを作成
     - Defaultユーザーと同じグループを適用
@@ -33,6 +36,7 @@
         - exitnodeとするかはinit_step2.shのexitnode設定から選択可
 
 ## 使い方
+
 1. releaseからファイルをダウンロード    
 2. init_step1.shを実行
 3. 作成したユーザーでログイン
