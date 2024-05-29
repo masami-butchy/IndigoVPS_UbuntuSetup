@@ -34,12 +34,22 @@
 
 ## 使い方
 
-1. releaseからファイルをダウンロード    
-2. init_step1.shを実行
-3. 作成したユーザーでログイン
+1. releaseからファイルをダウンロードして実行
+    ```
+    /bin/bash -c "$(curl -fsSL https://github.com/masami-butchy/IndigoVPS_UbuntuSetup/releases/latest/download/init_step1.sh)
+    ```
+2. 作成したユーザーでログイン
     - ユーザー名は新しいユーザー名を入力, パスワード無しで秘密鍵を使用してログイン
-4. init_step2.shを実行
-5. 表示されるtailscale認証用URLをコピーし、ブラウザでアクセスして認証
+3. init_step2.shを実行
+    ```
+    /bin/bash -c "$(curl -fsSL https://github.com/masami-butchy/IndigoVPS_UbuntuSetup/releases/latest/download/init_step2.sh)
+    ```
+4. 表示されるtailscale認証用URLをコピーし、ブラウザでアクセスして認証
     - ブラウザはPC、スマホどちらでも可能
-6. exitnodeを有効化するためtailscaleのマシン一覧からexitnodeを有効化
-7. 完了！
+5. exitnodeを有効化するため、tailscale管理ページのマシン一覧からexitnodeを有効化
+6. 完了！
+    > 完了後、init_step1.sh, init_step2.sh は不要です。邪魔な場合はrmコマンドで削除してください。
+    ログファイルも生成されているので必要ない場合は同様に削除してください。
+
+- その他
+    - ログは [実行したディレクトリ]/logInitInstSetup/ のディレクトリに実行結果とエラーログが作成されます。エラーが起きた際は参照してください。また、必要ない場合は削除してください。
