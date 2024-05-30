@@ -31,10 +31,7 @@ mkdir logInitInstSetup
 LOG_OUT=./logInitInstSetup/setup1_stdout.log
 LOG_ERR=./logInitInstSetup/setup1_stderr.log
 
-exec 1> >(
-  while read -r l; do echo "[$(date +"%Y-%m-%d %H:%M:%S")] $l"; done \
-    | tee -a $LOG_OUT
-)
+exec 1> >(tee -a $LOG_OUT)
 exec 2> >(tee -a $LOG_ERR)
 
 #----------以下、実行命令----------------------------
