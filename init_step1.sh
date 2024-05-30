@@ -38,34 +38,45 @@ exec 2> >(tee -a $LOG_ERR)
 
 # 実行前に最新バージョンに更新
 sudo apt update
+echo
 sudo apt upgrade
+echo
 
 #日本語ロケールをインストール（yを選択した場合のみ）
 if [[ $langJPInstall = [yY] ]]; then
   echo 日本語の言語パックをインストールし、ロケールを日本語へ変更します。
+  echo
   sudo apt install language-pack-ja -y
+  echo
   sudo localectl set-locale LANG=ja_JP.UTF-8
 else
   echo 日本語の言語パックをインストールしません
 fi
+echo
 
 # 追加するユーザー名を入力
 read -p "作成するユーザー名を入力 : " user
 # ユーザーを追加
 sudo adduser $user
+echo
+
 # 初期ユーザーと同じグループを追加
 for i in adm dialout cdrom floppy sudo audio dip video plugdev lxd netdev
 do
   sudo gpasswd -a $user $i
 done
+echo
 
 # 初期ユーザーにないグループを削除
 sudo gpasswd -d $user users
+echo
 
 # sshディレクトリを再帰的に追加（追加時に権限設定をユーザーに合わせる）
 sudo rsync --archive --chown=$user:$user ~/.ssh /home/$user
+echo
 # sshd_configをバックアップ
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config_default
+echo
 # sshd_config の変更を実行
 count=0
 for i in ${!oldConfigText*}
@@ -76,14 +87,7 @@ do
   sudo sed -i "s/${!sshdOldVarName}/${!sshdNewVarName}/g" "$sshdConfigFile"
   echo "ファイル $sshdConfigFile の設定 ${!sshdOldVarName} を ${!sshdNewVarName} に置換しました。"
 done
-
-#sudo sed -i "s/$oldConfigText1/$newConfigText1/g" "$sshdConfigFile"
-#echo "ファイル $sshdConfigFile の設定 $oldConfigText1 を $newConfigText1 に置換しました。"
-#sudo sed -i "s/$oldConfigText2/$newConfigText2/g" "$sshdConfigFile"
-#echo "ファイル $sshdConfigFile の設定 $oldConfigText2 を $newConfigText2 に置換しました。"
-
-# sshdを再起動
-#sudo systemctl restart sshd
+echo
 
 # ufw(ファイアウォール)の設定
 #連続アクセスを制限して各ポートのアクセスを許可（6回/30s以上でアクセス拒否）
@@ -94,14 +98,16 @@ do
   sudo ufw limit ${port[${i}]}
   echo "${port[${i}]}"
 done
+echo
 
 #ufwを有効化
 echo "ufwを有効化"
 sudo ufw enable
+echo
 #ufwをリロード
 echo "ufwを再読み込み"
 sudo ufw reload
-
+echo
 
 # step1 END
 echo
