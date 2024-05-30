@@ -30,15 +30,19 @@ else
   read -p "step1が未実行のため処理を中断します。init_step1.shを実行してください。 [Press Enter] " tmpflag
   exit
 fi
+echo
 
 # 実行前に最新バージョンに更新
 sudo apt update
+echo
 sudo apt upgrade
+echo
 
 # 初期ユーザー削除
 sudo userdel -r ubuntu
 echo "初期ユーザーを削除しました。"
 echo "今後のログインは作成したユーザーで行ってください。"
+echo
 
 # install tailscale
 echo "tailscaleをインストール"
@@ -46,6 +50,7 @@ curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.noarmor.gpg | sudo tee
 curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/jammy.tailscale-keyring.list | sudo tee /etc/apt/sources.list.d/tailscale.list
 sudo apt-get update
 sudo apt-get install tailscale
+echo
 #tailscale 起動, 認証
 if [[ $exitnodeFlag = [yY] ]]; then
   echo "このサーバーをexitnodeとしてtailscaleを認証・起動"
@@ -54,16 +59,17 @@ else
   echo "tailscaleを認証・起動（exitnode設定なし）"
   sudo tailscale up
 fi
-
+echo
 
 # 初期設定終了
 echo "----------------------------------------"
 echo "---------Initial setup END--------------"
 echo "----------------------------------------"
-
-echo "!!Caution!!-------------------"
+echo
+echo "-----!!Caution!!------------------"
 echo "初期ユーザーの削除を行いました！！"
 echo "ログインは作成したユーザーでログインしてください！！"
+echo
 
 #再起動
 read -p "再起動します。 OK? [y/n] " reboot
