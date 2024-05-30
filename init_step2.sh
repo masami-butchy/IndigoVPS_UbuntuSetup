@@ -23,7 +23,7 @@ exec 2> >(tee -a $LOG_ERR)
 #----------以下は実行する命令---------------
 
 #実行前確認
-read -p "init_step1.sh は実行済みですか?(実行済みの場合は処理を続けます) [y/n] " check
+read -p "init_step1.sh は実行済みですか?(実行済みの場合は処理を続けてください。) [y/n] " check
 if [[ $check = [yY] ]]; then
   echo "処理を続行します。"
 else
