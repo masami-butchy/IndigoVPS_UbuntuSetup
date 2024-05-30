@@ -53,7 +53,13 @@ sudo apt-get install tailscale
 echo
 #tailscale 起動, 認証
 if [[ $exitnodeFlag = [yY] ]]; then
+  #Enable IP forwarding
   echo "このサーバーをexitnodeとしてtailscaleを認証・起動"
+  echo 'net.ipv4.ip_forward = 1' | sudo tee -a /etc/sysctl.conf
+  echo 'net.ipv6.conf.all.forwarding = 1' | sudo tee -a /etc/sysctl.conf
+  sudo sysctl -p /etc/sysctl.conf
+  echo
+  # exitnodeを設定して認証, 起動
   sudo tailscale up --advertise-exit-node
 else
   echo "tailscaleを認証・起動（exitnode設定なし）"
