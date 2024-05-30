@@ -35,7 +35,7 @@ exec 1> >(
   while read -r l; do echo "[$(date +"%Y-%m-%d %H:%M:%S")] $l"; done \
     | tee -a $LOG_OUT
 )
-exec 2>>$LOG_ERR
+exec 2> >(tee -a $LOG_ERR)
 
 #----------以下、実行命令----------------------------
 
