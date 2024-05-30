@@ -39,9 +39,9 @@ sudo apt upgrade
 echo
 
 # 初期ユーザー削除
-sudo userdel -r ubuntu
-echo "初期ユーザーを削除しました。"
+echo "初期ユーザーを削除します。"
 echo "今後のログインは作成したユーザーで行ってください。"
+sudo userdel -r ubuntu
 echo
 
 # install tailscale
