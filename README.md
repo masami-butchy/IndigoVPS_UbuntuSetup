@@ -36,13 +36,13 @@
 
 1. releaseからファイルをダウンロードして実行
     ```
-    /bin/bash -c "$(curl -fsSL https://github.com/masami-butchy/IndigoVPS_UbuntuSetup/releases/latest/download/init_step1.sh)
+    /bin/bash -c "$(curl -fsSL https://github.com/masami-butchy/IndigoVPS_UbuntuSetup/releases/latest/download/init_step1.sh)"
     ```
 2. 作成したユーザーでログイン
     - ユーザー名は新しいユーザー名を入力, パスワード無しで秘密鍵を使用してログイン
 3. init_step2.shを実行
     ```
-    /bin/bash -c "$(curl -fsSL https://github.com/masami-butchy/IndigoVPS_UbuntuSetup/releases/latest/download/init_step2.sh)
+    /bin/bash -c "$(curl -fsSL https://github.com/masami-butchy/IndigoVPS_UbuntuSetup/releases/latest/download/init_step2.sh)"
     ```
 4. 表示されるtailscale認証用URLをコピーし、ブラウザでアクセスして認証
     - ブラウザはPC、スマホどちらでも可能
